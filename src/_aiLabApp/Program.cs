@@ -26,6 +26,23 @@ namespace _aiLabApp
                 var settings = JsonNode.LoadFromFile(settingsPath);
                 services.AddSingleton(settings);
 
+                // api keys
+                var apiKeyStore = new ApiKeyStore();
+                var apiKeyFilesNode = settings.Get("ApiKeyFiles");
+                var apiKeyFilesArray = apiKeyFilesNode?.AsArray();
+                if (apiKeyFilesArray != null)
+                {
+                    foreach (var fileNode in apiKeyFilesArray)
+                    {
+                        var filePath = fileNode.AsString();
+                        if (!string.IsNullOrWhiteSpace(filePath))
+                        {
+                            apiKeyStore.LoadFromFile(filePath);
+                        }
+                    }
+                }
+                services.AddSingleton(apiKeyStore);
+
                 // services
                 var tempProvider = services.BuildServiceProvider();
                 // ...
