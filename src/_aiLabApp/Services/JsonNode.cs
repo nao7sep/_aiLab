@@ -53,5 +53,42 @@ namespace _aiLabApp.Services
         public IEnumerable<JsonNode>? AsArray() => _element.ValueKind == JsonValueKind.Array ? _element.EnumerateArray().Select(e => new JsonNode(e)) : null;
         public bool IsNull() => _element.ValueKind == JsonValueKind.Null;
         public bool Exists() => _element.ValueKind != JsonValueKind.Undefined;
+
+        /// <summary>
+        /// Returns all direct child key-value pairs as a dictionary, preserving primitive types where possible.
+        /// </summary>
+        public Dictionary<string, object?> GetChildrenAsDictionary()
+        {
+            if (_element.ValueKind != JsonValueKind.Object)
+                throw new InvalidOperationException("JsonNode does not contain an object with children.");
+            var dict = new Dictionary<string, object?>();
+            foreach (var prop in _element.EnumerateObject())
+            {
+                switch (prop.Value.ValueKind)
+                {
+                    case JsonValueKind.String:
+                        dict[prop.Name] = prop.Value.GetString();
+                        break;
+                    case JsonValueKind.Number:
+                        if (prop.Value.TryGetInt32(out int intVal))
+                            dict[prop.Name] = intVal;
+                        else if (prop.Value.TryGetDouble(out double doubleVal))
+                            dict[prop.Name] = doubleVal;
+                        else
+                            throw new InvalidOperationException($"Number value for '{prop.Name}' could not be converted to int or double.");
+                        break;
+                    case JsonValueKind.True:
+                    case JsonValueKind.False:
+                        dict[prop.Name] = prop.Value.GetBoolean();
+                        break;
+                    case JsonValueKind.Null:
+                        dict[prop.Name] = null;
+                        break;
+                    default:
+                        throw new InvalidOperationException($"Unsupported or unknown value kind '{prop.Value.ValueKind}' for property '{prop.Name}'.");
+                }
+            }
+            return dict;
+        }
     }
 }

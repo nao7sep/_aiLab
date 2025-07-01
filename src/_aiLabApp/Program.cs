@@ -43,6 +43,11 @@ namespace _aiLabApp
                 }
                 services.AddSingleton(apiKeyStore);
 
+                // xAI config
+                var xaiConfigNode = settings.Get("XaiConfig");
+                var xaiConfig = new Services.xAI.XaiConfig(apiKeyStore, xaiConfigNode);
+                services.AddSingleton(xaiConfig);
+
                 // services
                 var tempProvider = services.BuildServiceProvider();
                 // ...
