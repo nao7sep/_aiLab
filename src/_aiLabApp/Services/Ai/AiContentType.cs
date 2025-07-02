@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services
+namespace _aiLabApp.Services.Ai
 {
     /// <summary>
     /// Supported content modalities for AI chat.

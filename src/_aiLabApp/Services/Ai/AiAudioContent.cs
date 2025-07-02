@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services
+namespace _aiLabApp.Services.Ai
 {
     /// <summary>
     /// Represents an audio content for AI chat.

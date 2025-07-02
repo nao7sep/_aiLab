@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services
+namespace _aiLabApp.Services.Ai
 {
     /// <summary>
     /// Represents a text message content for AI chat.

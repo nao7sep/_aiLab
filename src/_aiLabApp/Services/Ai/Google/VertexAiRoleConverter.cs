@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services.Google
+namespace _aiLabApp.Services.Ai.Google
 {
     public static class VertexAiRoleConverter
     {

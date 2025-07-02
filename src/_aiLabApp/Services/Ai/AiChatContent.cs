@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services
+namespace _aiLabApp.Services.Ai
 {
     /// <summary>
     /// Abstract base class for AI chat message content (text, image, tool call, etc).

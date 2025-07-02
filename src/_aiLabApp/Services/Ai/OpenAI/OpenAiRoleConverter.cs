@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services.OpenAI
+namespace _aiLabApp.Services.Ai.OpenAI
 {
     public static class OpenAiRoleConverter
     {

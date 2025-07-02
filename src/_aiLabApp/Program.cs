@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using _aiLabApp.Services;
+using _aiLabApp.Services.Ai.xAI;
 
 namespace _aiLabApp
 {
@@ -45,7 +46,7 @@ namespace _aiLabApp
 
                 // xAI config
                 var xaiConfigNode = settings.Get("XaiConfig");
-                var xaiConfig = new Services.xAI.XaiConfig(apiKeyStore, xaiConfigNode);
+                var xaiConfig = new XaiConfig(apiKeyStore, xaiConfigNode);
                 services.AddSingleton(xaiConfig);
 
                 // services

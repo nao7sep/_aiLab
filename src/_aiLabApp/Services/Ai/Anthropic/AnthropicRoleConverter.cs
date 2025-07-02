@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services.Anthropic
+namespace _aiLabApp.Services.Ai.Anthropic
 {
     public static class AnthropicRoleConverter
     {

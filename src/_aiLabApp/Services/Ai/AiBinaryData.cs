@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services
+namespace _aiLabApp.Services.Ai
 {
     /// <summary>
     /// Base class for any binary object (file, image, audio, etc.) that may be a URL or a byte array.

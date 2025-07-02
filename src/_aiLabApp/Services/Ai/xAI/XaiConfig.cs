@@ -1,4 +1,4 @@
-namespace _aiLabApp.Services.xAI
+namespace _aiLabApp.Services.Ai.xAI
 {
     /// <summary>
     /// Configuration for xAI (Grok) service provider.
