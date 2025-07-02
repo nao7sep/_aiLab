@@ -6,13 +6,14 @@ namespace _aiLabApp.Services.Ai
     public class AiChatMessage
     {
         public AiChatRole Role { get; set; }
-        public IList<AiChatContent> Contents = [];
+        public IList<AiChatContent> Contents { get; } = new List<AiChatContent>();
 
         public AiChatMessage() { }
         public AiChatMessage(AiChatRole role, params AiChatContent[] contents)
         {
             Role = role;
-            Contents = contents;
+            foreach (var content in contents)
+                Contents.Add(content);
         }
     }
 }

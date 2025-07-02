@@ -18,7 +18,7 @@ namespace _aiLabApp.Services.Ai
         /// <summary>
         /// Arbitrary parameters for the provider (e.g., endpoints, model names, etc).
         /// </summary>
-        public Dictionary<string, object?> Parameters = [];
+        public Dictionary<string, object?> Parameters { get; } = new Dictionary<string, object?>();
 
         protected AiServiceConfig(AiServiceProvider provider, ApiKeyStore apiKeyStore, JsonNode? configNode = null)
         {
