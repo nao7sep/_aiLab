@@ -2,8 +2,6 @@
 
 This document describes the current configuration of the AI providers integrated into your system. Each section outlines the selected models, their purpose, and how they support different modalities (text, image, audio, video).
 
----
-
 ## OpenAI Configuration
 
 ```json
@@ -28,8 +26,6 @@ This document describes the current configuration of the AI providers integrated
 **Rationale:**
 The default chat model prioritizes text performance (`gpt-4.1`). Audio support is delegated to `gpt-4o` to maintain reasoning quality without compromising text output.
 
----
-
 ## Anthropic Configuration
 
 ```json
@@ -49,8 +45,6 @@ The default chat model prioritizes text performance (`gpt-4.1`). Audio support i
 
 **Note:**
 Claude currently supports image input but not image generation. This config uses Sonnet 4 for a good balance of cost and performance.
-
----
 
 ## Google (Vertex AI) Configuration
 
@@ -77,8 +71,6 @@ Claude currently supports image input but not image generation. This config uses
 **Note:**
 Using the `asia-northeast1` (Tokyo) region ensures optimal latency and avoids cross-region overhead for Japanese users.
 
----
-
 ## xAI Configuration
 
 ```json
@@ -100,8 +92,6 @@ Using the `asia-northeast1` (Tokyo) region ensures optimal latency and avoids cr
 
 **Note:**
 Grok is currently not multimodal. A separate model is explicitly defined for image generation.
-
----
 
 ## Summary
 
