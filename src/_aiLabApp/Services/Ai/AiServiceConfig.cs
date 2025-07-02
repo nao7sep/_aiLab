@@ -13,7 +13,7 @@ namespace _aiLabApp.Services.Ai
         /// <summary>
         /// The API key for the provider.
         /// </summary>
-        public string ApiKey { get; private set; }
+        public string ApiKey { get; }
 
         /// <summary>
         /// Arbitrary parameters for the provider (e.g., endpoints, model names, etc).

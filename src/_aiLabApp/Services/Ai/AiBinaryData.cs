@@ -8,17 +8,32 @@ namespace _aiLabApp.Services.Ai
         /// <summary>
         /// Optional public URL to the binary data (preferred if available for some providers).
         /// </summary>
-        public string? Url { get; init; }
+
+        public string? Url { get; }
+        public byte[]? Bytes { get; }
+        public string? MimeType { get; }
 
         /// <summary>
-        /// Optional raw bytes of the binary data (used for inline upload or data URLs).
+        /// Initializes a new instance of <see cref="AiBinaryData"/> with a URL.
         /// </summary>
-        public byte[]? Bytes { get; init; }
+        /// <param name="url">The public URL to the binary data.</param>
+        /// <param name="mimeType">The MIME type of the data.</param>
+        protected AiBinaryData(string url, string? mimeType = null)
+        {
+            Url = url;
+            MimeType = mimeType;
+        }
 
         /// <summary>
-        /// Optional MIME type (e.g., "image/png", "audio/wav").
+        /// Initializes a new instance of <see cref="AiBinaryData"/> with raw bytes.
         /// </summary>
-        public string? MimeType { get; init; }
+        /// <param name="bytes">The raw bytes of the binary data.</param>
+        /// <param name="mimeType">The MIME type of the data.</param>
+        protected AiBinaryData(byte[] bytes, string? mimeType = null)
+        {
+            Bytes = bytes;
+            MimeType = mimeType;
+        }
 
         /// <summary>
         /// Returns true if this object represents a URL source.

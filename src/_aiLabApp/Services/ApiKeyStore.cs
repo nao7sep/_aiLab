@@ -20,6 +20,7 @@ namespace _aiLabApp.Services
                 {
                     _apiKeys[provider] = kvp.Value; // Overwrite if exists
                 }
+                else throw new InvalidOperationException($"Invalid AiServiceProvider value in API key file: '{kvp.Key}'");
             }
         }
 

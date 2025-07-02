@@ -25,7 +25,7 @@ namespace _aiLabApp.Services
             {
                 return new JsonNode(value);
             }
-            return null;
+            throw new KeyNotFoundException($"Key '{key}' not found in JSON object.");
         }
 
         public JsonNode? GetByPath(string path)
@@ -40,7 +40,7 @@ namespace _aiLabApp.Services
                 }
                 else
                 {
-                    return null;
+                    throw new KeyNotFoundException($"Key '{key}' not found in JSON path '{path}'.");
                 }
             }
             return new JsonNode(current);
