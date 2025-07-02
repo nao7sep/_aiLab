@@ -1,6 +1,6 @@
 namespace _aiLabApp.Services.Ai.Google
 {
-    public static class VertexAiRoleConverter
+    public static class GoogleRoleConverter
     {
         public static string ToProviderRoleString(AiChatRole role)
         {
