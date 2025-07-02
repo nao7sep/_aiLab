@@ -15,6 +15,7 @@ namespace _aiLabApp.Services.Ai
             Url = url;
             MimeType = mimeType;
         }
+
         public AiVideoContent(byte[] bytes, string? mimeType = null)
         {
             Bytes = bytes;

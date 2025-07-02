@@ -8,7 +8,10 @@ namespace _aiLabApp.Services.Ai
         public AiChatRole Role { get; set; }
         public IList<AiChatContent> Contents { get; } = new List<AiChatContent>();
 
-        public AiChatMessage() { }
+        public AiChatMessage()
+        {
+        }
+
         public AiChatMessage(AiChatRole role, params AiChatContent[] contents)
         {
             Role = role;

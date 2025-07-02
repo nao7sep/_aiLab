@@ -19,6 +19,7 @@ namespace _aiLabApp.Services.Ai
         /// Arbitrary parameters for the provider (e.g., endpoints, model names, etc).
         /// </summary>
         public Dictionary<string, object?> Parameters { get; } = new Dictionary<string, object?>();
+
         protected AiServiceConfig(AiServiceProvider provider, string apiKey, Dictionary<string, object?>? parameters = null)
         {
             if (!Enum.IsDefined(typeof(AiServiceProvider), provider))
