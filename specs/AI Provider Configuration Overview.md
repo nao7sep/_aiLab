@@ -76,7 +76,7 @@ Using the `asia-northeast1` (Tokyo) region ensures optimal latency and avoids cr
 ```json
 "XaiConfig": {
   "ApiHost": "api.x.ai",
-  "LanguageModel": "grok-3",
+  "ChatModel": "grok-3",
   "ImageGenerationModel": "grok-2-image",
   "TimeoutSeconds": 30
 }
@@ -86,7 +86,7 @@ Using the `asia-northeast1` (Tokyo) region ensures optimal latency and avoids cr
 
 | Key                    | Value          | Description                                       |
 | ---------------------- | -------------- | ------------------------------------------------- |
-| `LanguageModel`        | `grok-3`       | Used for text generation tasks. Not multimodal.   |
+| `ChatModel`            | `grok-3`       | Used for text generation tasks. Not multimodal.   |
 | `ImageGenerationModel` | `grok-2-image` | Used for generating images based on text prompts. |
 | `TimeoutSeconds`       | `30`           | Request timeout for xAI API interactions.         |
 
