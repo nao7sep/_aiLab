@@ -8,7 +8,7 @@ This document describes the current configuration of the AI providers integrated
 "OpenAiConfig": {
   "ApiHost": "api.openai.com",
   "ChatModel": "gpt-4.1",
-  "ImageGenerationModel": "gpt-image-1",
+  "ImageModel": "gpt-image-1",
   "AudioModel": "gpt-4o",
   "TimeoutSeconds": 30
 }
@@ -19,7 +19,7 @@ This document describes the current configuration of the AI providers integrated
 | Key                    | Value         | Description                                                                |
 | ---------------------- | ------------- | -------------------------------------------------------------------------- |
 | `ChatModel`            | `gpt-4.1`     | Used for text-centric tasks requiring high reasoning and language quality. |
-| `ImageGenerationModel` | `gpt-image-1` | Used for generating high-quality images from text prompts.                 |
+| `ImageModel`           | `gpt-image-1` | Used for generating high-quality images from text prompts.                 |
 | `AudioModel`           | `gpt-4o`      | Used specifically for audio input/output (e.g., transcription, voice).     |
 | `TimeoutSeconds`       | `30`          | Maximum duration to wait for a response from the OpenAI API.               |
 
@@ -52,8 +52,8 @@ Claude currently supports image input but not image generation. This config uses
 "GoogleConfig": {
   "ApiHost": "asia-northeast1-aiplatform.googleapis.com",
   "ChatModel": "gemini-2.5-pro",
-  "ImageGenerationModel": "imagen-4",
-  "VideoGenerationModel": "veo-3",
+  "ImageModel": "imagen-4",
+  "VideoModel": "veo-3",
   "TimeoutSeconds": 30
 }
 ```
@@ -64,8 +64,8 @@ Claude currently supports image input but not image generation. This config uses
 | ---------------------- | ------------------------------------------- | ----------------------------------------------------------------------------- |
 | `ApiHost`              | `asia-northeast1-aiplatform.googleapis.com` | Optimized for Japanese users with lowest latency via Tokyo region.            |
 | `ChatModel`            | `gemini-2.5-pro`                            | High-performance multimodal model for advanced chat, reasoning, and planning. |
-| `ImageGenerationModel` | `imagen-4`                                  | Used for generating images based on detailed prompts.                         |
-| `VideoGenerationModel` | `veo-3`                                     | Used to generate short video content from descriptions.                       |
+| `ImageModel`           | `imagen-4`                                  | Used for generating images based on detailed prompts.                         |
+| `VideoModel`           | `veo-3`                                     | Used to generate short video content from descriptions.                       |
 | `TimeoutSeconds`       | `30`                                        | Request timeout for Vertex AI endpoints.                                      |
 
 **Note:**
@@ -77,7 +77,7 @@ Using the `asia-northeast1` (Tokyo) region ensures optimal latency and avoids cr
 "XaiConfig": {
   "ApiHost": "api.x.ai",
   "ChatModel": "grok-3",
-  "ImageGenerationModel": "grok-2-image",
+  "ImageModel": "grok-2-image",
   "TimeoutSeconds": 30
 }
 ```
@@ -87,7 +87,7 @@ Using the `asia-northeast1` (Tokyo) region ensures optimal latency and avoids cr
 | Key                    | Value          | Description                                       |
 | ---------------------- | -------------- | ------------------------------------------------- |
 | `ChatModel`            | `grok-3`       | Used for text generation tasks. Not multimodal.   |
-| `ImageGenerationModel` | `grok-2-image` | Used for generating images based on text prompts. |
+| `ImageModel`           | `grok-2-image` | Used for generating images based on text prompts. |
 | `TimeoutSeconds`       | `30`           | Request timeout for xAI API interactions.         |
 
 **Note:**
