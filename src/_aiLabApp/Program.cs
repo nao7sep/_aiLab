@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using _aiLabApp.Services;
+using _aiLabApp.Services.Ai.Anthropic;
+using _aiLabApp.Services.Ai.Google;
+using _aiLabApp.Services.Ai.OpenAI;
 using _aiLabApp.Services.Ai.xAI;
 
 namespace _aiLabApp
@@ -43,6 +46,21 @@ namespace _aiLabApp
                     }
                 }
                 services.AddSingleton(apiKeyStore);
+
+                // OpenAI config
+                var openAiConfigNode = settings.Get("OpenAiConfig");
+                var openAiConfig = new OpenAiConfig(apiKeyStore, openAiConfigNode);
+                services.AddSingleton(openAiConfig);
+
+                // Anthropic config
+                var anthropicConfigNode = settings.Get("AnthropicConfig");
+                var anthropicConfig = new AnthropicConfig(apiKeyStore, anthropicConfigNode);
+                services.AddSingleton(anthropicConfig);
+
+                // Google config
+                var googleConfigNode = settings.Get("GoogleConfig");
+                var googleConfig = new GoogleConfig(apiKeyStore, googleConfigNode);
+                services.AddSingleton(googleConfig);
 
                 // xAI config
                 var xaiConfigNode = settings.Get("XaiConfig");
