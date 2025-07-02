@@ -5,6 +5,9 @@ namespace _aiLabApp.Services
     /// </summary>
     public abstract class AiChatContent
     {
-        // Optionally, add common properties or methods here in the future.
+        /// <summary>
+        /// The modality/type of this content (text, image, etc).
+        /// </summary>
+        public abstract AiContentType ContentType { get; }
     }
 }
