@@ -5,8 +5,8 @@ namespace _aiLabApp.Services.Ai.Google
     /// </summary>
     public class GoogleConfig : AiServiceConfig
     {
-        public GoogleConfig(ApiKeyStore apiKeyStore, JsonNode? configNode = null)
-            : base(AiServiceProvider.Google, apiKeyStore, configNode)
+        public GoogleConfig(string apiKey, Dictionary<string, object?>? parameters = null)
+            : base(AiServiceProvider.Google, apiKey, parameters)
         {
         }
     }

@@ -5,8 +5,8 @@ namespace _aiLabApp.Services.Ai.OpenAI
     /// </summary>
     public class OpenAiConfig : AiServiceConfig
     {
-        public OpenAiConfig(ApiKeyStore apiKeyStore, JsonNode? configNode = null)
-            : base(AiServiceProvider.OpenAI, apiKeyStore, configNode)
+        public OpenAiConfig(string apiKey, Dictionary<string, object?>? parameters = null)
+            : base(AiServiceProvider.OpenAI, apiKey, parameters)
         {
         }
     }

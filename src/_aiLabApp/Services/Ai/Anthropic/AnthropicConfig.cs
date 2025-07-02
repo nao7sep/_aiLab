@@ -5,8 +5,8 @@ namespace _aiLabApp.Services.Ai.Anthropic
     /// </summary>
     public class AnthropicConfig : AiServiceConfig
     {
-        public AnthropicConfig(ApiKeyStore apiKeyStore, JsonNode? configNode = null)
-            : base(AiServiceProvider.Anthropic, apiKeyStore, configNode)
+        public AnthropicConfig(string apiKey, Dictionary<string, object?>? parameters = null)
+            : base(AiServiceProvider.Anthropic, apiKey, parameters)
         {
         }
     }

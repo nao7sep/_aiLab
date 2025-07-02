@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using _aiLabApp.Services;
+﻿using _aiLabApp.Services;
+using _aiLabApp.Services.Ai;
 using _aiLabApp.Services.Ai.Anthropic;
 using _aiLabApp.Services.Ai.Google;
 using _aiLabApp.Services.Ai.OpenAI;
@@ -11,26 +11,17 @@ namespace _aiLabApp
     {
         static void Main(string[] args)
         {
-            var services = new ServiceCollection();
-
-            // console
             var consoleWriter = new ConsoleWriter();
-            services.AddSingleton(consoleWriter);
 
-            // logger
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             string logFilePath = Path.Combine(desktopPath, $"_aiLab-{DateTime.UtcNow:yyyyMMdd'T'HHmmss'Z'}.log");
             var logger = new Logger(logFilePath);
-            services.AddSingleton(logger);
 
             try
             {
-                // settings
                 string settingsPath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
                 var settings = JsonNode.LoadFromFile(settingsPath);
-                services.AddSingleton(settings);
 
-                // api keys
                 var apiKeyStore = new ApiKeyStore();
                 var apiKeyFilesNode = settings.Get("ApiKeyFiles");
                 var apiKeyFilesArray = apiKeyFilesNode?.AsArray();
@@ -45,31 +36,26 @@ namespace _aiLabApp
                         }
                     }
                 }
-                services.AddSingleton(apiKeyStore);
 
-                // OpenAI config
+                var openAiApiKey = apiKeyStore.GetApiKey(AiServiceProvider.OpenAI);
                 var openAiConfigNode = settings.Get("OpenAiConfig");
-                var openAiConfig = new OpenAiConfig(apiKeyStore, openAiConfigNode);
-                services.AddSingleton(openAiConfig);
+                var openAiParameters = openAiConfigNode?.GetChildrenAsDictionary();
+                var openAiConfig = new OpenAiConfig(openAiApiKey!, openAiParameters);
 
-                // Anthropic config
+                var anthropicApiKey = apiKeyStore.GetApiKey(AiServiceProvider.Anthropic);
                 var anthropicConfigNode = settings.Get("AnthropicConfig");
-                var anthropicConfig = new AnthropicConfig(apiKeyStore, anthropicConfigNode);
-                services.AddSingleton(anthropicConfig);
+                var anthropicParameters = anthropicConfigNode?.GetChildrenAsDictionary();
+                var anthropicConfig = new AnthropicConfig(anthropicApiKey!, anthropicParameters);
 
-                // Google config
+                var googleApiKey = apiKeyStore.GetApiKey(AiServiceProvider.Google);
                 var googleConfigNode = settings.Get("GoogleConfig");
-                var googleConfig = new GoogleConfig(apiKeyStore, googleConfigNode);
-                services.AddSingleton(googleConfig);
+                var googleParameters = googleConfigNode?.GetChildrenAsDictionary();
+                var googleConfig = new GoogleConfig(googleApiKey!, googleParameters);
 
-                // xAI config
+                var xaiApiKey = apiKeyStore.GetApiKey(AiServiceProvider.xAI);
                 var xaiConfigNode = settings.Get("XaiConfig");
-                var xaiConfig = new XaiConfig(apiKeyStore, xaiConfigNode);
-                services.AddSingleton(xaiConfig);
-
-                // services
-                var tempProvider = services.BuildServiceProvider();
-                // ...
+                var xaiParameters = xaiConfigNode?.GetChildrenAsDictionary();
+                var xaiConfig = new XaiConfig(xaiApiKey!, xaiParameters);
             }
             catch (Exception ex)
             {

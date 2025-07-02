@@ -5,8 +5,8 @@ namespace _aiLabApp.Services.Ai.xAI
     /// </summary>
     public class XaiConfig : AiServiceConfig
     {
-        public XaiConfig(ApiKeyStore apiKeyStore, JsonNode? configNode = null)
-            : base(AiServiceProvider.xAI, apiKeyStore, configNode)
+        public XaiConfig(string apiKey, Dictionary<string, object?>? parameters = null)
+            : base(AiServiceProvider.xAI, apiKey, parameters)
         {
         }
     }
