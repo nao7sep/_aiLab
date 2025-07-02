@@ -6,7 +6,7 @@ namespace _aiLabApp.Services
 {
     public class ApiKeyStore
     {
-        private readonly Dictionary<AiServiceProvider, string> _apiKeys = new();
+        private readonly Dictionary<AiServiceProvider, string> _apiKeys = [];
 
         public void LoadFromFile(string filePath)
         {

@@ -18,7 +18,7 @@ namespace _aiLabApp.Services.Ai
         /// <summary>
         /// Arbitrary parameters for the provider (e.g., endpoints, model names, etc).
         /// </summary>
-        public Dictionary<string, object?>? Parameters { get; private set; }
+        public Dictionary<string, object?> Parameters = [];
 
         protected AiServiceConfig(AiServiceProvider provider, ApiKeyStore apiKeyStore, JsonNode? configNode = null)
         {
@@ -26,7 +26,14 @@ namespace _aiLabApp.Services.Ai
                 throw new ArgumentException($"Invalid AI service provider: {provider}", nameof(provider));
             Provider = provider;
             ApiKey = apiKeyStore.GetApiKey(provider) ?? throw new KeyNotFoundException($"API key for {provider} not found.");
-            Parameters = configNode?.GetChildrenAsDictionary();
+            if (configNode != null)
+            {
+                var dict = configNode.GetChildrenAsDictionary();
+                foreach (var kvp in dict)
+                {
+                    Parameters[kvp.Key] = kvp.Value;
+                }
+            }
         }
     }
 }
