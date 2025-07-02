@@ -1,14 +1,4 @@
-﻿Great. I’ll create a detailed report on how to use the Anthropic Claude Sonnet 4 chat completions API, focusing on the latest version. The report will include:
-
-* A breakdown of the JSON request payload (including optional fields)
-* The expected structure of the JSON response
-* Streaming format details (if supported)
-* C# examples using HttpClient to make chat completions requests (with and without streaming)
-
-I’ll get started and let you know once the report is ready.
-
-
-# Anthropropic Claude API JSON Request-Response Guide
+﻿# Anthropropic Claude API JSON Request-Response Guide
 
 ## Overview of the Claude API
 
@@ -37,8 +27,6 @@ curl https://api.anthropic.com/v1/messages \
      --header "content-type: application/json" \
      --data '{...}'
 ```
-
-
 
 In C#, you will set these headers on an `HttpRequestMessage` or directly on `HttpClient` default headers before sending the request.
 
