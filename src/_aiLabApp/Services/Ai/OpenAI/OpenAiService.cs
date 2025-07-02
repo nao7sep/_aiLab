@@ -22,6 +22,8 @@ namespace _aiLabApp.Services.Ai.OpenAI
             throw new NotImplementedException();
         }
 
+        // OpenAI.Sora: Video generation is available via Azure OpenAI Service,
+        // but there is currently *no public endpoint* on the standard OpenAI API.
         public Task<AiChatResponse> GenerateVideosAsync(AiChatRequest request, CancellationToken cancellationToken = default)
             => throw new NotSupportedException();
     }
