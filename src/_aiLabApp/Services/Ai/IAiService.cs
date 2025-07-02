@@ -1,8 +1,8 @@
 namespace _aiLabApp.Services.Ai
 {
     /// <summary>
-    /// Unified interface for all AI multimodal operations (text, image, audio, video).
-    /// Each method supports multiple outputs (candidates) where supported by the provider.
+    /// Unified interface for all AI multimodal operations (text, image, audio, video, etc).
+    /// Uses AiChatRequest and AiChatResponse for all modalities.
     /// </summary>
     public interface IAiService
     {
@@ -13,23 +13,23 @@ namespace _aiLabApp.Services.Ai
         Task<AiChatResponse> GenerateTextsAsync(AiChatRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Generates one or more images from a prompt. The response contains all generated images as a list.
+        /// Generates one or more images from a prompt using a dedicated image generation API (e.g., DALL·E, Gemini Image).
         /// </summary>
-        Task<AiImageResponse> GenerateImagesAsync(AiImageRequest request, CancellationToken cancellationToken = default);
+        Task<AiChatResponse> GenerateImagesAsync(AiChatRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Generates one or more audio outputs from a prompt (text-to-speech or similar). The response contains all generated audios as a list.
+        /// Generates one or more audio outputs from a prompt (text-to-speech or similar).
         /// </summary>
-        Task<AiAudioResponse> GenerateAudiosAsync(AiAudioRequest request, CancellationToken cancellationToken = default);
+        Task<AiChatResponse> GenerateAudiosAsync(AiChatRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Transcribes one or more audio inputs to text (speech-to-text). The response contains all transcripts as a list.
+        /// Transcribes one or more audio inputs to text (speech-to-text).
         /// </summary>
-        Task<AiAudioResponse> TranscribeAudiosAsync(AiAudioRequest request, CancellationToken cancellationToken = default);
+        Task<AiChatResponse> TranscribeAudiosAsync(AiChatRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Generates one or more videos from a prompt. The response contains all generated videos as a list.
+        /// Generates one or more videos from a prompt.
         /// </summary>
-        Task<AiVideoResponse> GenerateVideosAsync(AiVideoRequest request, CancellationToken cancellationToken = default);
+        Task<AiChatResponse> GenerateVideosAsync(AiChatRequest request, CancellationToken cancellationToken = default);
     }
 }
