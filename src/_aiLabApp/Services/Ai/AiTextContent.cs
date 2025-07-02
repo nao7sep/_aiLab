@@ -5,8 +5,8 @@ namespace _aiLabApp.Services.Ai
     /// </summary>
     public class AiTextContent : AiChatContent
     {
-        public string Text { get; }
         public override AiContentType ContentType => AiContentType.Text;
+        public string Text { get; }
 
         public AiTextContent(string text)
         {
