@@ -9,21 +9,21 @@ namespace _aiLabApp.Services.Ai
 
         public string? Url { get; }
         public byte[]? Bytes { get; }
-        public string? MimeType { get; }
+        public string MimeType { get; }
 
         public bool IsUrl => !string.IsNullOrWhiteSpace(Url);
         public bool IsBytes => Bytes != null && Bytes.Length > 0;
 
-        public AiAudioContent(string url, string? mimeType = null)
+        public AiAudioContent(string url, string mimeType)
         {
             Url = url ?? throw new ArgumentNullException(nameof(url));
-            MimeType = mimeType;
+            MimeType = mimeType ?? throw new ArgumentNullException(nameof(mimeType));
         }
 
-        public AiAudioContent(byte[] bytes, string? mimeType = null)
+        public AiAudioContent(byte[] bytes, string mimeType)
         {
             Bytes = bytes ?? throw new ArgumentNullException(nameof(bytes));
-            MimeType = mimeType;
+            MimeType = mimeType ?? throw new ArgumentNullException(nameof(mimeType));
         }
     }
 }

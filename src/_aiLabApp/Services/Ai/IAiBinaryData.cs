@@ -16,9 +16,9 @@ namespace _aiLabApp.Services.Ai
         byte[]? Bytes { get; }
 
         /// <summary>
-        /// Optional MIME type (e.g., "image/png", "audio/wav").
+        /// MIME type (e.g., "image/png", "audio/wav"). This value is required.
         /// </summary>
-        string? MimeType { get; }
+        string MimeType { get; }
 
         /// <summary>
         /// Returns true if this object represents a URL source.
