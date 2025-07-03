@@ -5,14 +5,15 @@ namespace _aiLabApp.Services.Ai.Anthropic
 {
     public static class AnthropicApiClient
     {
-        public static async Task<JsonObject> PostAsync(string url, string apiKey, string anthropicVersion, JsonObject payload, CancellationToken cancellationToken)
+        public static async Task<JsonObject> PostAsync(string endpoint, string apiKey, string apiVersion, JsonObject payload, int timeoutSeconds, CancellationToken cancellationToken)
         {
             try
             {
-                var flurlResp = await url
+                var flurlResp = await endpoint
                     .WithHeader("x-api-key", apiKey)
-                    .WithHeader("anthropic-version", anthropicVersion)
+                    .WithHeader("anthropic-version", apiVersion)
                     .WithHeader("Content-Type", "application/json")
+                    .WithTimeout(TimeSpan.FromSeconds(timeoutSeconds))
                     .PostJsonAsync(payload, cancellationToken: cancellationToken);
                 var response = await flurlResp.GetJsonAsync<JsonObject>();
                 return response;
