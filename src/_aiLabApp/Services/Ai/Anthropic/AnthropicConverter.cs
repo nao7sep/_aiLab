@@ -1,8 +1,8 @@
 namespace _aiLabApp.Services.Ai.Anthropic
 {
-    public class AnthropicConverter : IAiServiceConverter
+    public static class AnthropicConverter
     {
-        public string RoleToString(AiChatRole role)
+        public static string RoleToString(AiChatRole role)
         {
             return role switch
             {

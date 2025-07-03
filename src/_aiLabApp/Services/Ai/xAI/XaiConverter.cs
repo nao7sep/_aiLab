@@ -1,8 +1,8 @@
 namespace _aiLabApp.Services.Ai.xAI
 {
-    public class XaiConverter : IAiServiceConverter
+    public static class XaiConverter
     {
-        public string RoleToString(AiChatRole role)
+        public static string RoleToString(AiChatRole role)
         {
             return role switch
             {

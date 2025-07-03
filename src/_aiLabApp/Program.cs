@@ -20,7 +20,7 @@ namespace _aiLabApp
             try
             {
                 string settingsPath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
-                var settings = JsonNode.LoadFromFile(settingsPath);
+                var settings = _JsonNode.LoadFromFile(settingsPath);
 
                 var apiKeyStore = new ApiKeyStore();
                 var apiKeyFilesNode = settings.Get("ApiKeyFiles");
