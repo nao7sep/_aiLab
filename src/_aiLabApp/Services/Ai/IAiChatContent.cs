@@ -1,13 +1,13 @@
 namespace _aiLabApp.Services.Ai
 {
     /// <summary>
-    /// Abstract base class for AI chat message content (text, image, tool call, etc).
+    /// Interface for AI chat message content (text, image, tool call, etc).
     /// </summary>
-    public abstract class AiChatContent
+    public interface IAiChatContent
     {
         /// <summary>
         /// The modality/type of this content (text, image, etc).
         /// </summary>
-        public abstract AiContentType ContentType { get; }
+        AiContentType ContentType { get; }
     }
 }

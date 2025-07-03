@@ -7,7 +7,7 @@ namespace _aiLabApp.Services
         private readonly string _filePath;
         private StreamWriter? _writer;
         private bool _disposed = false;
-        private static readonly object _lock = new object();
+        private static readonly object _lock = new();
 
         public Logger(string filePath)
         {

@@ -5,8 +5,8 @@ namespace _aiLabApp.Services.Ai
     /// </summary>
     public class AiChatRequest
     {
-        public IList<AiChatMessage> Messages { get; } = new List<AiChatMessage>();
-        public Dictionary<string, object?> Parameters { get; } = new Dictionary<string, object?>();
+        public IList<AiChatMessage> Messages { get; } = [];
+        public Dictionary<string, object?> Parameters { get; } = [];
 
         public AiChatRequest()
         {

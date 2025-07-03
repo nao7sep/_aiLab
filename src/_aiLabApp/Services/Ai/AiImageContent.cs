@@ -3,12 +3,16 @@ namespace _aiLabApp.Services.Ai
     /// <summary>
     /// Represents an image content for AI chat.
     /// </summary>
-    public class AiImageContent : AiChatContent
+    public class AiImageContent : IAiChatContent, IAiBinaryData
     {
-        public override AiContentType ContentType => AiContentType.Image;
+        public AiContentType ContentType => AiContentType.Image;
+
         public string? Url { get; }
         public byte[]? Bytes { get; }
         public string? MimeType { get; }
+
+        public bool IsUrl => !string.IsNullOrEmpty(Url);
+        public bool IsBytes => Bytes != null && Bytes.Length > 0;
 
         public AiImageContent(string url, string? mimeType = null)
         {

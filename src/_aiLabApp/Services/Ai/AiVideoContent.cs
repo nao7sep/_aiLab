@@ -3,12 +3,16 @@ namespace _aiLabApp.Services.Ai
     /// <summary>
     /// Represents a video content for AI chat.
     /// </summary>
-    public class AiVideoContent : AiChatContent
+    public class AiVideoContent : IAiChatContent, IAiBinaryData
     {
-        public override AiContentType ContentType => AiContentType.Video;
+        public AiContentType ContentType => AiContentType.Video;
+
         public string? Url { get; }
         public byte[]? Bytes { get; }
         public string? MimeType { get; }
+
+        public bool IsUrl => !string.IsNullOrEmpty(Url);
+        public bool IsBytes => Bytes != null && Bytes.Length > 0;
 
         public AiVideoContent(string url, string? mimeType = null)
         {

@@ -7,6 +7,11 @@ namespace _aiLabApp.Services.Ai
     public interface IAiService
     {
         /// <summary>
+        /// Gets the configuration for this AI service instance.
+        /// </summary>
+        IAiServiceConfig Config { get; }
+
+        /// <summary>
         /// Generates one or more text/multimodal responses (e.g., chat completions or candidates) from a conversation prompt.
         /// The response may contain multiple messages if the provider supports it; otherwise, a single message is returned in a list.
         /// </summary>

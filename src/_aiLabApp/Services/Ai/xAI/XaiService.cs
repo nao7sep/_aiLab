@@ -2,6 +2,8 @@ namespace _aiLabApp.Services.Ai.xAI
 {
     public class XaiService : IAiService
     {
+        public IAiServiceConfig Config { get; }
+
         public Task<AiChatResponse> GenerateTextsAsync(AiChatRequest request, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
@@ -20,5 +22,10 @@ namespace _aiLabApp.Services.Ai.xAI
 
         public Task<AiChatResponse> GenerateVideosAsync(AiChatRequest request, CancellationToken cancellationToken = default)
             => throw new NotSupportedException();
+
+        public XaiService(IAiServiceConfig config)
+        {
+            Config = config ?? throw new ArgumentNullException(nameof(config), "XaiService requires a valid configuration.");
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace _aiLabApp.Services
 {
     public class ApiKeyStore
     {
-        private readonly Dictionary<AiServiceProvider, string> _apiKeys = new Dictionary<AiServiceProvider, string>();
+        private readonly Dictionary<AiServiceProvider, string> _apiKeys = [];
 
         public void LoadFromFile(string filePath)
         {
@@ -24,7 +24,7 @@ namespace _aiLabApp.Services
             }
         }
 
-        public string? GetApiKey(AiServiceProvider provider)
+        public string GetApiKey(AiServiceProvider provider)
         {
             if (_apiKeys.TryGetValue(provider, out var key))
             {

@@ -3,12 +3,16 @@ namespace _aiLabApp.Services.Ai
     /// <summary>
     /// Represents an audio content for AI chat.
     /// </summary>
-    public class AiAudioContent : AiChatContent
+    public class AiAudioContent : IAiChatContent, IAiBinaryData
     {
-        public override AiContentType ContentType => AiContentType.Audio;
+        public AiContentType ContentType => AiContentType.Audio;
+
         public string? Url { get; }
         public byte[]? Bytes { get; }
         public string? MimeType { get; }
+
+        public bool IsUrl => !string.IsNullOrEmpty(Url);
+        public bool IsBytes => Bytes != null && Bytes.Length > 0;
 
         public AiAudioContent(string url, string? mimeType = null)
         {

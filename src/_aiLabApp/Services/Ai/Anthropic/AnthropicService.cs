@@ -2,6 +2,8 @@ namespace _aiLabApp.Services.Ai.Anthropic
 {
     public class AnthropicService : IAiService
     {
+        public IAiServiceConfig Config { get; }
+
         public Task<AiChatResponse> GenerateTextsAsync(AiChatRequest request, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
@@ -18,5 +20,10 @@ namespace _aiLabApp.Services.Ai.Anthropic
 
         public Task<AiChatResponse> GenerateVideosAsync(AiChatRequest request, CancellationToken cancellationToken = default)
             => throw new NotSupportedException();
+
+        public AnthropicService(IAiServiceConfig config)
+        {
+            Config = config ?? throw new ArgumentNullException(nameof(config), "AnthropicService requires a valid configuration.");
+        }
     }
 }
