@@ -15,9 +15,7 @@ namespace _aiLabApp.Services.Ai
         /// </summary>
         public Dictionary<string, object?> Metadata { get; } = [];
 
-        public AiChatResponse()
-        {
-        }
+        public AiChatResponse() {}
 
         public AiChatResponse(IEnumerable<AiChatMessage> messages, Dictionary<string, object?>? metadata = null)
         {

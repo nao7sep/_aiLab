@@ -8,9 +8,7 @@ namespace _aiLabApp.Services.Ai
         public IList<AiChatMessage> Messages { get; } = [];
         public Dictionary<string, object?> Parameters { get; } = [];
 
-        public AiChatRequest()
-        {
-        }
+        public AiChatRequest() {}
 
         public AiChatRequest(IEnumerable<AiChatMessage> messages, Dictionary<string, object?>? parameters = null)
         {
