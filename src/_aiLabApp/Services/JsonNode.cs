@@ -3,32 +3,32 @@ using System.Text;
 
 namespace _aiLabApp.Services
 {
-    public class JsonNode
+    public class _JsonNode
     {
         private readonly JsonElement _element;
 
-        private JsonNode(JsonElement element)
+        private _JsonNode(JsonElement element)
         {
             _element = element;
         }
 
-        public static JsonNode LoadFromFile(string filePath)
+        public static _JsonNode LoadFromFile(string filePath)
         {
             if (Path.IsPathFullyQualified(filePath) == false)
                 throw new ArgumentException("File path must be fully qualified.", nameof(filePath));
             var json = File.ReadAllText(filePath, Encoding.UTF8);
             var element = JsonSerializer.Deserialize<JsonElement>(json);
-            return new JsonNode(element);
+            return new _JsonNode(element);
         }
 
-        public JsonNode? Get(string key)
+        public _JsonNode? Get(string key)
         {
             if (_element.ValueKind == JsonValueKind.Object && _element.TryGetProperty(key, out var value))
-                return new JsonNode(value);
+                return new _JsonNode(value);
             throw new KeyNotFoundException($"Key '{key}' not found in JSON object.");
         }
 
-        public JsonNode? GetByPath(string path)
+        public _JsonNode? GetByPath(string path)
         {
             var keys = path.Split('/');
             JsonElement current = _element;
@@ -39,14 +39,14 @@ namespace _aiLabApp.Services
                 else
                     throw new KeyNotFoundException($"Key '{key}' not found in JSON path '{path}'.");
             }
-            return new JsonNode(current);
+            return new _JsonNode(current);
         }
 
         public string? AsString() => _element.ValueKind == JsonValueKind.String ? _element.GetString() : null;
         public int? AsInt() => _element.ValueKind == JsonValueKind.Number && _element.TryGetInt32(out var v) ? v : null;
         public double? AsDouble() => _element.ValueKind == JsonValueKind.Number && _element.TryGetDouble(out var v) ? v : null;
         public bool? AsBool() => _element.ValueKind == JsonValueKind.True || _element.ValueKind == JsonValueKind.False ? _element.GetBoolean() : null;
-        public IEnumerable<JsonNode>? AsArray() => _element.ValueKind == JsonValueKind.Array ? _element.EnumerateArray().Select(e => new JsonNode(e)) : null;
+        public IEnumerable<_JsonNode>? AsArray() => _element.ValueKind == JsonValueKind.Array ? _element.EnumerateArray().Select(e => new _JsonNode(e)) : null;
         public bool IsNull() => _element.ValueKind == JsonValueKind.Null;
         public bool Exists() => _element.ValueKind != JsonValueKind.Undefined;
 

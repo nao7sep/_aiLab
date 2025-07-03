@@ -11,7 +11,7 @@ namespace _aiLabApp.Services.Ai
         public byte[]? Bytes { get; }
         public string? MimeType { get; }
 
-        public bool IsUrl => !string.IsNullOrEmpty(Url);
+        public bool IsUrl => !string.IsNullOrWhiteSpace(Url);
         public bool IsBytes => Bytes != null && Bytes.Length > 0;
 
         public AiAudioContent(string url, string? mimeType = null)
