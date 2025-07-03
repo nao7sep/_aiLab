@@ -12,10 +12,14 @@ namespace _aiLabApp.Services.Ai.Anthropic
             var chatModel = Config.Parameters["ChatModel"] as string;
             // to avoid compiler warning
             var chatApiVersion = Config.Parameters["ChatApiVersion"] as string ?? throw new AiServiceException("ChatApiVersion is not configured.");
+            int chatMaxTokens = Convert.ToInt32(Config.Parameters["ChatMaxTokens"]);
             int timeoutSeconds = Convert.ToInt32(Config.Parameters["TimeoutSeconds"]);
 
-            if (string.IsNullOrWhiteSpace(request.Parameters["model"] as string))
+            if (!request.Parameters.ContainsKey("model") || string.IsNullOrWhiteSpace(request.Parameters["model"] as string))
                 request.Parameters["model"] = chatModel;
+
+            if (!request.Parameters.ContainsKey("max_tokens") || request.Parameters["max_tokens"] is not int)
+                request.Parameters["max_tokens"] = chatMaxTokens;
 
             var payload = AnthropicRequestBuilder.BuildRequest(request);
             var jsonResponse = await AnthropicApiClient.PostAsync(endpoint, apiKey, chatApiVersion, payload, timeoutSeconds, cancellationToken);

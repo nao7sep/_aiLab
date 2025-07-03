@@ -12,11 +12,11 @@ namespace _aiLabApp
     {
         static void Main(string[] args)
         {
-            var consoleWriter = new ConsoleWriter();
-
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             string logFilePath = Path.Combine(desktopPath, $"_aiLab-{DateTime.UtcNow:yyyyMMdd'T'HHmmss'Z'}.log");
             var logger = new Logger(logFilePath);
+
+            var consoleWriter = new ConsoleWriter();
 
             try
             {
@@ -47,7 +47,7 @@ namespace _aiLabApp
                 var anthropicParameters = anthropicConfigNode?.GetChildrenAsDictionary();
                 var anthropicConfig = new AnthropicConfig(anthropicApiKey, anthropicParameters);
                 var anthropicService = new AnthropicService(anthropicConfig);
-                AnthropicServiceTests.TestGenerateTextsAsync(consoleWriter, logger, anthropicConfig);
+                AnthropicServiceTests.TestGenerateTextsAsync(logger, consoleWriter, anthropicService);
 
                 var googleApiKey = apiKeyStore.GetApiKey(AiServiceProvider.Google);
                 var googleConfigNode = settings.Get("GoogleConfig");

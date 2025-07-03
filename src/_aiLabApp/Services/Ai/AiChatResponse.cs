@@ -2,6 +2,9 @@ namespace _aiLabApp.Services.Ai
 {
     /// <summary>
     /// Represents a multi-modal AI chat response, including all returned messages and optional metadata.
+    /// Note: Most AI providers return only a single message per response (with possibly multiple contents).
+    /// This class supports multiple messages for future-proofing and flexibility, but in practice,
+    /// usually only the first message will contain meaningful values.
     /// </summary>
     public class AiChatResponse
     {
