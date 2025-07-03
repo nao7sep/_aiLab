@@ -1,4 +1,4 @@
-﻿# Anthropropic Claude API JSON Request-Response Guide
+﻿# Anthropropic Claude API JSON Request/Response Guide
 
 ## Overview of the Claude API
 
