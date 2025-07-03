@@ -31,7 +31,7 @@ namespace _aiLabApp.Services.Ai.OpenAI
 
         public OpenAiService(IAiServiceConfig config)
         {
-            Config = config ?? throw new ArgumentNullException(nameof(config), "OpenAiService requires a valid configuration.");
+            Config = config ?? throw new ArgumentNullException(nameof(config));
         }
     }
 }

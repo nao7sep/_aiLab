@@ -16,13 +16,13 @@ namespace _aiLabApp.Services.Ai
 
         public AiVideoContent(string url, string? mimeType = null)
         {
-            Url = url;
+            Url = url ?? throw new ArgumentNullException(nameof(url));
             MimeType = mimeType;
         }
 
         public AiVideoContent(byte[] bytes, string? mimeType = null)
         {
-            Bytes = bytes;
+            Bytes = bytes ?? throw new ArgumentNullException(nameof(bytes));
             MimeType = mimeType;
         }
     }

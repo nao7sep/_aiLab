@@ -31,7 +31,7 @@ namespace _aiLabApp.Services.Ai.Google
 
         public GoogleService(IAiServiceConfig config)
         {
-            Config = config ?? throw new ArgumentNullException(nameof(config), "GoogleService requires a valid configuration.");
+            Config = config ?? throw new ArgumentNullException(nameof(config));
         }
     }
 }

@@ -25,7 +25,7 @@ namespace _aiLabApp.Services.Ai.xAI
 
         public XaiService(IAiServiceConfig config)
         {
-            Config = config ?? throw new ArgumentNullException(nameof(config), "XaiService requires a valid configuration.");
+            Config = config ?? throw new ArgumentNullException(nameof(config));
         }
     }
 }

@@ -23,7 +23,7 @@ namespace _aiLabApp.Services.Ai.Anthropic
 
         public AnthropicService(IAiServiceConfig config)
         {
-            Config = config ?? throw new ArgumentNullException(nameof(config), "AnthropicService requires a valid configuration.");
+            Config = config ?? throw new ArgumentNullException(nameof(config));
         }
     }
 }

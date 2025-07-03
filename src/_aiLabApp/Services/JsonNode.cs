@@ -14,6 +14,8 @@ namespace _aiLabApp.Services
 
         public static JsonNode LoadFromFile(string filePath)
         {
+            if (Path.IsPathFullyQualified(filePath) == false)
+                throw new ArgumentException("File path must be fully qualified.", nameof(filePath));
             var json = File.ReadAllText(filePath, Encoding.UTF8);
             var element = JsonSerializer.Deserialize<JsonElement>(json);
             return new JsonNode(element);
@@ -22,9 +24,7 @@ namespace _aiLabApp.Services
         public JsonNode? Get(string key)
         {
             if (_element.ValueKind == JsonValueKind.Object && _element.TryGetProperty(key, out var value))
-            {
                 return new JsonNode(value);
-            }
             throw new KeyNotFoundException($"Key '{key}' not found in JSON object.");
         }
 
@@ -35,13 +35,9 @@ namespace _aiLabApp.Services
             foreach (var key in keys)
             {
                 if (current.ValueKind == JsonValueKind.Object && current.TryGetProperty(key, out var next))
-                {
                     current = next;
-                }
                 else
-                {
                     throw new KeyNotFoundException($"Key '{key}' not found in JSON path '{path}'.");
-                }
             }
             return new JsonNode(current);
         }

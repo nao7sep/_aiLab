@@ -31,9 +31,7 @@ namespace _aiLabApp
                     {
                         var filePath = fileNode.AsString();
                         if (!string.IsNullOrWhiteSpace(filePath))
-                        {
                             apiKeyStore.LoadFromFile(filePath);
-                        }
                     }
                 }
 

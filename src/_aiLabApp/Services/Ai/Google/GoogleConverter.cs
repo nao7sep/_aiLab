@@ -9,7 +9,7 @@ namespace _aiLabApp.Services.Ai.Google
                 AiChatRole.System => "system",
                 AiChatRole.User => "user",
                 AiChatRole.Assistant => "model",
-                _ => throw new ArgumentOutOfRangeException(nameof(role), role, null)
+                _ => throw new ArgumentOutOfRangeException(nameof(role), role, "Invalid AI chat role.")
             };
         }
     }

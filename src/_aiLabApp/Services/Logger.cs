@@ -27,6 +27,7 @@ namespace _aiLabApp.Services
 
         private void Write(LogMessageType type, string message)
         {
+            // type may not be defined in the enum and that is not considered an error
             var timestamp = DateTime.UtcNow.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'");
             var line = $"[{timestamp} {type}] {message}";
             lock (_lock)

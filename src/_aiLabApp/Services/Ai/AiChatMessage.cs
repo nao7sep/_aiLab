@@ -14,6 +14,8 @@ namespace _aiLabApp.Services.Ai
 
         public AiChatMessage(AiChatRole role, params IAiChatContent[] contents)
         {
+            if (Enum.IsDefined(typeof(AiChatRole), role) == false)
+                throw new ArgumentOutOfRangeException(nameof(role), role, "Invalid AI chat role.");
             Role = role;
             foreach (var content in contents)
                 Contents.Add(content);

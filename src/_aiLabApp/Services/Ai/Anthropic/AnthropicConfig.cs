@@ -15,9 +15,7 @@ namespace _aiLabApp.Services.Ai.Anthropic
             if (parameters != null)
             {
                 foreach (var kvp in parameters)
-                {
                     Parameters[kvp.Key] = kvp.Value;
-                }
             }
         }
     }
