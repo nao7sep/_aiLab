@@ -3,6 +3,7 @@ using _aiLabApp.Services.Ai;
 using _aiLabApp.Services.Ai.Anthropic;
 using _aiLabApp.Services.Ai.Google;
 using _aiLabApp.Services.Ai.OpenAI;
+using _aiLabApp.Services.Ai.Tests;
 using _aiLabApp.Services.Ai.xAI;
 
 namespace _aiLabApp
@@ -46,6 +47,7 @@ namespace _aiLabApp
                 var anthropicParameters = anthropicConfigNode?.GetChildrenAsDictionary();
                 var anthropicConfig = new AnthropicConfig(anthropicApiKey, anthropicParameters);
                 var anthropicService = new AnthropicService(anthropicConfig);
+                AnthropicServiceTests.TestGenerateTextsAsync(consoleWriter, logger, anthropicConfig);
 
                 var googleApiKey = apiKeyStore.GetApiKey(AiServiceProvider.Google);
                 var googleConfigNode = settings.Get("GoogleConfig");
