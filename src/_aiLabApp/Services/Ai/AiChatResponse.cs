@@ -8,7 +8,7 @@ namespace _aiLabApp.Services.Ai
         /// <summary>
         /// The list of assistant (or system) messages returned by the AI provider.
         /// </summary>
-        public IList<AiChatMessage> Messages { get; } = [];
+        public List<AiChatMessage> Messages { get; } = [];
 
         /// <summary>
         /// Optional: Provider-specific metadata (e.g., usage, finish reason, safety ratings, etc.)
